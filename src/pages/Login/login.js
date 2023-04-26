@@ -11,31 +11,50 @@ class Login extends Component {
             
         }
     }
+      componentDidMount(){
+        
+           let ls = localStorage.getItem("isLogin");
+           if(ls){
+            this.setState({
+                isLogin:true,
 
+               })
+           }
+      }
     login=(e)=>{
     
            e.preventDefault();
          console.log(this.state);
+         
          if(this.state.username==="admin"  && this.state.password==="123"){
+            
                this.setState({
                 isLogin:true
                })
+               localStorage.setItem("isLogin",true)
+            //    localStorage.clear() 
          }else{
+            
             alert("please check credentials")
          }
+         
     }
     handleChange=(fieldname,e)=>{
-
+    
      this.setState({
         [fieldname]:e.target.value
      })
     }
 
 
+  
 
     render() {
+      
         return (
             <div className='col-6  offset-3'>  
+
+{this.props.Component}            
                {this.state.isLogin && <Navigate to={"/allProduct"} replace={true} ></Navigate>} 
                 <form onSubmit={(e)=>this.login(e)}>
                     <div className="form-group">
