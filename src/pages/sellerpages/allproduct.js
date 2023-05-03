@@ -16,9 +16,22 @@ class Allproduct extends Component {
 
         console.log(res.data.data)
     }
+    deleteProduct=async(item)=>{
+       console.log(item);
+       let ress = await  axios.get("https://onlinetestapi.gerasim.in/api/Ecomm/DeleteProductById",{params:{id:item.productId}});
+       console.log(ress);
+       let res = await axios.get("https://onlinetestapi.gerasim.in/api/Ecomm/GetAllProducts");
+       this.setState({
+           getAllProducts:res.data.data
+       })
+    }
 
+    addToCart=()=>{
+        console.log("add to crt call")
+    }
     render() {
         return (
+            <div className='container'>
             <div className='row'>
                 {
                     this.state.getAllProducts.map((item)=>{
@@ -26,11 +39,13 @@ class Allproduct extends Component {
                         return(
                             <div className='col-4'>
                             <div class="card" style={{"width": "18rem"}}>
-                            <img class="card-img-top" src={item.productImageUrl} alt="not available" />
+                            <img class="card-img-top" src={item.productImageUrl} width={200} height={180} alt="not available" />
                                 <div class="card-body">
                                     <h5 class="card-title">{item.productName}</h5>
                                     <p class="card-text">{item.productDescription}</p>
-                                    <a href="#" class="btn btn-primary">Edit detail</a>
+                                    {/* <a href="#" class="btn btn-primary">Edit detail</a> */}
+                                    <button className='btn btn-danger' onClick={()=>this.deleteProduct(item)}>Delete</button>
+                                    <button className='btn btn-primary ' onClick={()=>this.addToCart()}>Add to Cart</button>
                                 </div>
                         </div>
                         </div>
@@ -38,6 +53,7 @@ class Allproduct extends Component {
                     })
                 }
                
+            </div>
             </div>
         );
     }

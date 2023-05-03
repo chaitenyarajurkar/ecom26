@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AppContext } from '../../App';
 
-class Navbar extends Component {
-  
-
-    render() {
+const Navbar=()=>{
+  const {cartValues} = useContext(AppContext)
+ 
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,13 +22,19 @@ class Navbar extends Component {
                                 {/* <a className="nav-link" href="/allProduct">All Product</a> */}
                                 <Link to="/allProduct" className="nav-link" >All Product</Link>
                             </li>
-                            
+                            <li className="nav-item">
+                                <Link to="/constextApi" className="nav-link" >Context Api</Link>
+                            </li>
+                            <li className="nav-item">
+                               <p  className="nav-link"> Cart{cartValues}</p> 
+                            </li>
+
                         </ul>
                     </div>
                 </nav>
             </div>
         );
     }
-}
+
 
 export default Navbar;
