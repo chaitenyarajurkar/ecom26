@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Button from './button';
 class Allproduct extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             getAllProducts: []
+            
         }
     }
     async componentDidMount() {
+        console.log(this.state.getAllProducts.length)
+        debugger
         let res = await axios.get("https://onlinetestapi.gerasim.in/api/Ecomm/GetAllProducts");
+        
         this.setState({
-            getAllProducts:res.data.data
+            getAllProducts:res.data.data,
+            
+
         })
 
         console.log(res.data.data)
@@ -27,11 +34,15 @@ class Allproduct extends Component {
     }
 
     addToCart=()=>{
-        console.log("add to crt call")
+        console.log("add to crt call");
+        
     }
     render() {
         return (
             <div className='container'>
+              {!this.state.getAllProducts.length > 0  && <div className="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>}
             <div className='row'>
                 {
                     this.state.getAllProducts.map((item)=>{
@@ -45,7 +56,7 @@ class Allproduct extends Component {
                                     <p class="card-text">{item.productDescription}</p>
                                     {/* <a href="#" class="btn btn-primary">Edit detail</a> */}
                                     <button className='btn btn-danger' onClick={()=>this.deleteProduct(item)}>Delete</button>
-                                    <button className='btn btn-primary ' onClick={()=>this.addToCart()}>Add to Cart</button>
+                                   <Button />
                                 </div>
                         </div>
                         </div>

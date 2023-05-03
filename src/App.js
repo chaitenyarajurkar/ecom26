@@ -14,12 +14,13 @@ function App() {
   const [cartValues,setCartValues] = useState(0);
 
   const IncreaseCart =()=>{
+    
     setCartValues(cartValues + 1);
   }
 
   return (
     <div>
-      <AppContext.Provider value={{cartValues}}>
+      <AppContext.Provider value={{cartValues,IncreaseCart}}>
       <BrowserRouter>
       <Navbar></Navbar>
          <Routes>

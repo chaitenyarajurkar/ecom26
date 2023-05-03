@@ -4,7 +4,7 @@ import { AppContext } from '../../App';
 
 const Navbar=()=>{
   const {cartValues} = useContext(AppContext)
- 
+       
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,9 +26,10 @@ const Navbar=()=>{
                                 <Link to="/constextApi" className="nav-link" >Context Api</Link>
                             </li>
                             <li className="nav-item">
-                               <p  className="nav-link"> Cart{cartValues}</p> 
+                               <p  className="nav-link"> Cart{" "}{cartValues}</p> 
                             </li>
 
+                           
                         </ul>
                     </div>
                 </nav>
