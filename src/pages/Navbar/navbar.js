@@ -1,10 +1,22 @@
-import React, { Component, useContext } from 'react';
+import React, { Component, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../App';
 
 const Navbar=()=>{
-  const {cartValues} = useContext(AppContext)
-       
+  const {cartValues} = useContext(AppContext);
+  const [isLogin,setIslogin] =useState(false);
+    useEffect(()=>{
+        
+            let ls =localStorage.getItem("isLogin");
+               if(ls){
+                
+                setIslogin(true);
+               }
+    },[])
+       const logout=()=>{
+            localStorage.clear();
+            window.location.reload();
+       }
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,6 +43,18 @@ const Navbar=()=>{
 
                            
                         </ul>
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                            <ul class="navbar-nav ">
+                                
+                               {isLogin &&  <li class="nav-item">
+                                    <p class="nav-link" onClick={()=>logout()}>Logout</p>
+                                </li>}
+                                {/* <li class="nav-item">
+                                    <a class="nav-link" href="#">Login</a>
+                                </li> */}
+                            </ul>
+                        </div>
+                       
                     </div>
                 </nav>
             </div>

@@ -31,8 +31,11 @@ class Login extends Component {
                this.setState({
                 isLogin:true
                })
-               localStorage.setItem("isLogin",true)
+               localStorage.setItem("isLogin",true);
             //    localStorage.clear() 
+            debugger
+            window.location.reload()
+
          }else{
             
             alert("please check credentials")
@@ -70,7 +73,7 @@ class Login extends Component {
                         <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                         <label className="form-check-label" for="exampleCheck1">Check me out</label>
                     </div> */}
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary">Login</button>
                 </form>
             </div>
         );
