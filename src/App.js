@@ -24,9 +24,10 @@ function App() {
       <BrowserRouter>
       <Navbar></Navbar>
          <Routes>
-          <Route path='/' element={<Login  />} ></Route>
+          <Route path='/' element={<Allproduct  />} ></Route>
+          <Route path='/login' element={<Login />}></Route>
           <Route path='/addProduct' element={<Protected  Component={<Addproduct/>} />}></Route>
-          <Route path='/allProduct' element={<Protected  Component={<Allproduct/>} />}></Route>
+          {/* <Route path='/allProduct' element={<Protected  Component={<Allproduct/>} />}></Route> */}
           <Route path='/constextApi' element={<Parent />}></Route>
          </Routes>
       </BrowserRouter>

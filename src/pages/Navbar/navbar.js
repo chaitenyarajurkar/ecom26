@@ -1,16 +1,23 @@
 import React, { Component, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../App';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping, faRightFromBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar=()=>{
   const {cartValues} = useContext(AppContext);
   const [isLogin,setIslogin] =useState(false);
+  const [isAdmin,setIsAdmin] =useState(false);
     useEffect(()=>{
         
             let ls =localStorage.getItem("isLogin");
+            let ls2 =localStorage.getItem("isAdmin");
                if(ls){
                 
                 setIslogin(true);
+               }
+               if(ls2){
+                setIsAdmin(true);
                }
     },[])
        const logout=()=>{
@@ -34,12 +41,13 @@ const Navbar=()=>{
                                 {/* <a className="nav-link" href="/allProduct">All Product</a> */}
                                 <Link to="/allProduct" className="nav-link" >All Product</Link>
                             </li>
-                            <li className="nav-item">
+                            {!isAdmin && <> 
+                            {/* <li className="nav-item">
                                 <Link to="/constextApi" className="nav-link" >Context Api</Link>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
-                               <p  className="nav-link"> Cart{" "}{cartValues}</p> 
-                            </li>
+                               <p  className="nav-link"> <FontAwesomeIcon icon={faCartShopping} />{" "}<sup>{cartValues}</sup></p> 
+                            </li> </>}
 
                            
                         </ul>
@@ -47,11 +55,11 @@ const Navbar=()=>{
                             <ul class="navbar-nav ">
                                 
                                {isLogin &&  <li class="nav-item">
-                                    <p class="nav-link" onClick={()=>logout()}>Logout</p>
+                                    <p class="nav-link" onClick={()=>logout()}> <FontAwesomeIcon icon={faRightFromBracket} />Logout</p>
                                 </li>}
-                                {/* <li class="nav-item">
-                                    <a class="nav-link" href="#">Login</a>
-                                </li> */}
+                                {!isLogin &&   <li className="nav-item">
+                                <Link to="/login" className="nav-link" > <FontAwesomeIcon icon={faUser} />Login</Link>
+                            </li>}
                             </ul>
                         </div>
                        

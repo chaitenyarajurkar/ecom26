@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Button from './button';
+import Modal from '../otherui/modal';
 class Allproduct extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             getAllProducts: [],
-            showModalpopup:false
+            showModalpopup:false,
+            showDelete:false
             
         }
     }
     async componentDidMount() {
         console.log(this.state.getAllProducts.length)
-        debugger
-        let res = await axios.get("https://onlinetestapi.gerasim.in/api/Ecomm/GetAllProducts");
         
+        let res = await axios.get("https://onlinetestapi.gerasim.in/api/Ecomm/GetAllProducts");
+        let ls = localStorage.getItem("isAdmin");
+       
         this.setState({
             getAllProducts:res.data.data,
-            
-
+            showDelete:ls ? true: false
         })
 
         console.log(res.data.data)
@@ -64,7 +66,7 @@ class Allproduct extends Component {
                                     <h5 className="card-title">{item.productName}</h5>
                                     <p className="card-text">{item.productDescription}</p>
                                     {/* <a href="#" className="btn btn-primary">Edit detail</a> */}
-                                    <button className='btn btn-danger' onClick={()=>this.deleteProduct(item)}>Delete</button>
+                                  {this.state.showDelete &&   <button className='btn btn-danger' onClick={()=>this.deleteProduct(item)}>Delete</button>}
                                    <Button />
                                 </div>
                         </div>
@@ -76,25 +78,7 @@ class Allproduct extends Component {
             </div>
 
 
-              {this.state.showModalpopup &&  <div className="modal" tabindex="-1" style={{display:"block"}} role="dialog">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">Modal title</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <p>Modal body text goes here.</p>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-primary">Save changes</button>
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={()=>this.closeModal()}>Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>}
+              {this.state.showModalpopup && <Modal /> }
             </div>
         );
     }

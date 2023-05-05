@@ -32,6 +32,7 @@ class Login extends Component {
                 isLogin:true
                })
                localStorage.setItem("isLogin",true);
+               localStorage.setItem("isAdmin",true);
             //    localStorage.clear() 
             debugger
             window.location.reload()
@@ -58,7 +59,7 @@ class Login extends Component {
             <div className='col-6  offset-3'>  
 
 {this.props.Component}            
-               {this.state.isLogin && <Navigate to={"/allProduct"} replace={true} ></Navigate>} 
+               {this.state.isLogin && <Navigate to={"/"} replace={true} ></Navigate>} 
                 <form onSubmit={(e)=>this.login(e)}>
                     <div className="form-group">
                         <label for="exampleInputEmail1">Username / Mobile no.</label>
