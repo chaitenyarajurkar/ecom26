@@ -48,6 +48,8 @@ class Allproduct extends Component {
             showModalpopup:false
         })
     }
+
+
     render() {
         return (
             <div className='container'>
@@ -78,7 +80,7 @@ class Allproduct extends Component {
             </div>
 
 
-              {this.state.showModalpopup && <Modal /> }
+              {this.state.showModalpopup && <Modal message="Are you sure want to delelte item" closeModal={()=>this.closeModal()}  /> }
             </div>
         );
     }

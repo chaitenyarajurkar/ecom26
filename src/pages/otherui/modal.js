@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = () => {
+const Modal = (props) => {
     return (
         <div className="modal" tabindex="-1" style={{display:"block"}} role="dialog">
                     <div className="modal-dialog" role="document">
@@ -12,11 +12,11 @@ const Modal = () => {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <p>Modal body text goes here.</p>
+                                <p>{props.message}</p>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-primary">Save changes</button>
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={()=>this.closeModal()}>Close</button>
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={()=>props.closeModal()}>{props.closeName ? props.closeName : "Close"}</button>
                             </div>
                         </div>
                     </div>
