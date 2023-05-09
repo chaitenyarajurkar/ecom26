@@ -69,9 +69,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+============================================================
+git repo checkout flow ==> git clone url .
 
-
-
+============================================================
 
 how to push the new code on git 
 
@@ -85,3 +86,8 @@ git remote add origin master  (first time only)
 
 
 git push -f origin master
+
+================================
+if repo is update  ===>> git pull
+
+
