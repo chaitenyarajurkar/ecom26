@@ -49,7 +49,18 @@ const Navbar=()=>{
                                <p  className="nav-link"> <FontAwesomeIcon icon={faCartShopping} />{" "}<sup>{cartValues}</sup></p> 
                             </li> </>}
 
-                           
+                            <li className="nav-item">
+                                {/* <a className="nav-link" href="/allProduct">All Product</a> */}
+                                <Link to="/memoHook" className="nav-link" >useMemoTopic</Link>
+                            </li>
+                            <li className="nav-item">
+                                {/* <a className="nav-link" href="/allProduct">All Product</a> */}
+                                <Link to="/fileone" className="nav-link" >CuntomHook</Link>
+                            </li>
+                            <li className="nav-item">
+                                {/* <a className="nav-link" href="/allProduct">All Product</a> */}
+                                <Link to="/filetwo" className="nav-link" >filetwo</Link>
+                            </li>
                         </ul>
                         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                             <ul class="navbar-nav ">
